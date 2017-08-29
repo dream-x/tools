@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config_path="/Users/kmax/github/_dreamx/tools/fork_updater/.config"
+config_path=$1
 
 while read line; do    
   path=`echo $line | cut -d, -f1`
@@ -9,4 +9,3 @@ while read line; do
   
   cd $path; git checkout $branch; git fetch $remote; git merge $remote/$branch; git push origin $branch
 done < $config_path
-
