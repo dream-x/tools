@@ -11,7 +11,7 @@ while read line; do
 
   current_branch=`git branch | grep "*" | cut -d \* -f 2 | awk '{print $1}'`
 
-  cd $path; git stash; git checkout $branch; git fetch $remote; 
+  git stash; git checkout $branch; git fetch $remote; 
   git merge $remote/$branch; git push origin $branch; 
   git checkout $current_branch; git stash pop;
 done < $config_path
